@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <legend>
+            <strong>学生列表</strong>
+            <strong><a th:href="@{/create}">新建</a></strong>
+        </legend>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>学校</th>
+                <th>分数</th>
+                <th>管理</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student:${students}">
+                <th scope="row" th:text="${student.id}"></th>
+                <td th:utext="${student.name}"></td>
+                <td th:text="${student.school}"></td>
+                <td th:text="${student.score}"></td>
+                <td><a th:href="@{/delete/{studentId}(studentId=${student.id})}"><span style='color:red'>删除</span></a></td>
+                <td><a th:href="@{/update/{studentId}(studentId=${student.id})}">更新</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
